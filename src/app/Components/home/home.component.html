@@ -1,8 +1,20 @@
-<h1>{{info.name}}</h1>
+<!-- <h1 [class.highlighted]="!isServicesHidden">{{info?.name}}</h1> -->
+<h1 [style.color]="isServicesHidden?'red':'blue'">{{info?.name}}</h1>
 <!-- <img src="{{info.logo}}" alt="logo"> -->
 <img [src]="info.logo" alt="logo">
+<br>
+<button type="button" class="btn btn-primary" (click)="toggleServices()">Toggle services</button>
 
-<h3>Our services:</h3>
-<ul>
-    <li *ngFor="let ser of info.services">{{ser}}</li>
-</ul>
+<div [hidden]="isServicesHidden">
+    <h3>Our services:</h3>
+    <ul>
+        <li *ngFor="let ser of info.services">{{ser}}</li>
+    </ul>
+</div>
+<hr>
+<h3>Feedback:</h3>
+<div class="mb-3">
+    <label for="" class="form-label">Feedback:</label>
+    <input type="text" class="form-control" [(ngModel)]="userFeedback" placeholder="Your Feedback">
+    <hr> You entered: {{userFeedback}}
+</div>

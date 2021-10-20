@@ -1,0 +1,39 @@
+<h3>Today Date: {{todayDate | date: 'mediumDate'}}</h3>
+<h2>Products List:</h2>
+<table class="table table-hover table-striped table-dark">
+    <thead>
+        <tr>
+            <th>No.</th>
+            <th>Name</th>
+            <th>Price in USD</th>
+            <th>Price in EGP</th>
+            <th>Quantity</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let prd of prdList; let i=index" [ngSwitch]="prd.Quantity">
+            <!-- <td>{{prd?.ID}}</td> -->
+            <td>{{i+1}}</td>
+            <!--Property binding-->
+            <!-- <td [class.text-danger]="prd.Quantity==0">{{prd?.Name}}</td> -->
+            <!--attribute directive-->
+            <td [ngClass]="{'text-danger': prd.Quantity==0, 'text-warning': prd.Quantity==1,'text-primary': prd.Quantity>2 }">
+                {{prd?.Name | uppercase}}
+            </td>
+            <!-- <td [ngStyle]="{'color': prd.Quantity==0?'red':'blue'}">{{prd?.Name}}</td> -->
+            <td>{{prd.Price |currency: "USD":"symbol"}}</td>
+            <td>{{prd.Price |USDtoEGP:10 |currency: "EGP":"symbol"}}</td>
+
+            <td *ngSwitchCase="1"> Last item</td>
+            <td *ngSwitchCase="2"> Two items only available</td>
+            <td *ngSwitchDefault>
+                <!-- <div *ngIf="prd.Quantity">{{prd?.Quantity}}</div> -->
+                <div *ngIf="prd.Quantity; else OutOfStock">{{prd?.Quantity}}</div>
+                <ng-template #OutOfStock>Out of Stock</ng-template>
+            </td>
+            <td><img appHighligher [src]="prd.ImgURL" alt=""></td>
+        </tr>
+
+    </tbody>
+</table>

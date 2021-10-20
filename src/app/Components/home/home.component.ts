@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StoreInfo } from 'src/app/shared/store-info';
+import { StoreInfo } from 'src/app/Models/store-info';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +12,17 @@ export class HomeComponent implements OnInit {
     logo:"https://picsum.photos/200/300.jpg",
     services:["Training", "Education", "Coaching", "Freelancing"]
   }
+
+  isServicesHidden:boolean= true;
+  userFeedback:string="";
   
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  toggleServices(){
+    this.isServicesHidden=!this.isServicesHidden;
   }
 
 }
