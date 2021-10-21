@@ -1,0 +1,15 @@
+<div class="bg-light">
+    <div class="mb-3">
+        <label for="" class="form-label">Select Category:</label>
+        <select name="cat" id="catDDL" class="form-select" [(ngModel)]="selectedCategory">
+          <option *ngFor="let cat of catList" [value]="cat.ID">{{cat.Name}}</option>
+      </select>
+        <h4>[For Test] Selected Cat in master: {{selectedCategory}}</h4>
+    </div>
+    <hr>
+    <div class="bg-warning">
+        <app-order-details [sentCatIDFrmMaster]="selectedCategory" (totalPriceChanged)="onTotalPriceChanged($event)"></app-order-details>
+    </div>
+    <hr>
+    <h3>Total Order Price: {{totalPriceForBoughtItems}}</h3>
+</div>

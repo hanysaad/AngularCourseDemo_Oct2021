@@ -1,5 +1,11 @@
 <h3>Today Date: {{todayDate | date: 'mediumDate'}}</h3>
-<h2>Products List:</h2>
+<div class="mb-3">
+    <label for="" class="form-label">Select Category:</label>
+    <select name="cat" id="catDDL" class="form-select" [(ngModel)]="selectedCategory">
+      <option *ngFor="let cat of catList" [value]="cat.ID">{{cat.Name}}</option>
+  </select>
+</div>
+<hr>
 <table class="table table-hover table-striped table-dark">
     <thead>
         <tr>
@@ -12,7 +18,8 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let prd of prdList; let i=index" [ngSwitch]="prd.Quantity">
+        <!-- <tr *ngFor="let prd of prdList; let i=index" [ngSwitch]="prd.Quantity"> -->
+        <tr *ngFor="let prd of getProductsByCatID(); let i=index" [ngSwitch]="prd.Quantity">
             <!-- <td>{{prd?.ID}}</td> -->
             <td>{{i+1}}</td>
             <!--Property binding-->
@@ -32,7 +39,13 @@
                 <div *ngIf="prd.Quantity; else OutOfStock">{{prd?.Quantity}}</div>
                 <ng-template #OutOfStock>Out of Stock</ng-template>
             </td>
-            <td><img appHighligher [src]="prd.ImgURL" alt=""></td>
+            <!-- <td><img appHighligher [src]="prd.ImgURL" alt=""></td> -->
+            <!-- <td><img appHighligher highlightColor="yellow" [src]="prd.ImgURL" alt=""></td> -->
+            <!-- <td><img appHighligher [highlightColor]="imgHoverColor" [src]="prd.ImgURL" alt=""></td> -->
+            <!-- <td><img appHighligher="blue" [src]="prd.ImgURL" alt=""></td> -->
+            <!-- <td><img [appHighligher]="imgHoverColor" [src]="prd.ImgURL" alt=""></td> -->
+            <td><img [appHighligher]="imgHoverColor" defaultColor="yellow" [src]="prd.ImgURL" alt=""></td>
+
         </tr>
 
     </tbody>

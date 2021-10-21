@@ -1,19 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { Category } from 'src/app/Models/category';
+import { Component, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import {EventEmitter} from '@angular/core'
 import { Product } from 'src/app/Models/product';
 
 @Component({
-  selector: 'app-prodcuts',
-  templateUrl: './prodcuts.component.html',
-  styleUrls: ['./prodcuts.component.scss']
+  selector: 'app-order-details',
+  templateUrl: './order-details.component.html',
+  styleUrls: ['./order-details.component.scss']
 })
-export class ProdcutsComponent implements OnInit {
+export class OrderDetailsComponent implements OnInit, OnChanges {
   prdList: Product[]=[];
-  catList: Category[]=[];
-  selectedCategory:number=0;
+  prdListForSelCat: Product[]=[];
+  @Input() sentCatIDFrmMaster:number=0;
+  totalOrderPrice:number=0;
+  @Output() totalPriceChanged: EventEmitter<number>= new EventEmitter<number>();
 
-  todayDate: Date= new Date();
-  imgHoverColor:string="green";
   constructor() {
     this.prdList=[
       {ID:1, Name: 'Lenovo thinkpad', Price:150456.555, Quantity:1,ImgURL:'https://fakeimg.pl/250x100', CategoryID:1},
@@ -27,21 +27,27 @@ export class ProdcutsComponent implements OnInit {
       {ID:6, Name: 'Smasung Note 21', Price:900, Quantity:90,ImgURL:'https://fakeimg.pl/250x100', CategoryID:3}
     ];
 
-    this.catList=[
-      {ID:1, Name:'Laptop'},
-      {ID:2, Name:'Tablet'},
-      {ID:3, Name:'Mobile'},
-    ];
    }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if(this.sentCatIDFrmMaster!=0)
+      this.prdListForSelCat= this.prdList.filter(item=>item.CategoryID==this.sentCatIDFrmMaster);
+    else
+      this.prdListForSelCat=Array.from(this.prdList)     
+  }
 
   ngOnInit(): void {
   }
 
-  getProductsByCatID(){
-    if(this.selectedCategory!=0)
-      return this.prdList.filter(item=>item.CategoryID==this.selectedCategory);
-    else
-      return this.prdList;   
-  }
+  // getProductsByCatID(){
+     
+  // }
 
-}
+  calcTotalPrice(itemPrice:any, itemCount:any)
+  {
+    // this.totalOrderPrice+= (itemPrice as number*itemCount as number);
+    // this.totalOrderPrice+= (parseInt(itemPrice)*parseInt(itemCount));
+    this.totalOrderPrice+= (+itemPrice*+itemCount);
+    this.totalPriceChanged.emit(this.totalOrderPrice);
+  }
+} 

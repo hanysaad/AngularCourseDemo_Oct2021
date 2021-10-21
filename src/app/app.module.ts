@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { ProdcutsComponent } from './Components/prodcuts/prodcuts.component';
 import { HighligherDirective } from './Directives/highligher.directive';
 import { USDtoEGPPipe } from './Pipes/usdto-egp.pipe';
+import { OrderMasterComponent } from './Components/Order/order-master/order-master.component';
+import { OrderDetailsComponent } from './Components/Order/order-details/order-details.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { USDtoEGPPipe } from './Pipes/usdto-egp.pipe';
     HomeComponent,
     ProdcutsComponent,
     HighligherDirective,
-    USDtoEGPPipe
+    USDtoEGPPipe,
+    OrderMasterComponent,
+    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,

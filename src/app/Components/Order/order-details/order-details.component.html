@@ -1,0 +1,39 @@
+<div class="bg-warning">
+
+    <table class="table table-hover table-striped table-dark">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Name</th>
+                <th>Price in USD</th>
+                <th>Quantity</th>
+                <th>Image</th>
+                <th>details</th>
+                <th>item count</th>
+                <th>Buy</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let prd of prdListForSelCat; let i=index" [ngSwitch]="prd.Quantity">
+                <td>{{i+1}}</td>
+                <td [ngClass]="{'text-danger': prd.Quantity==0, 'text-warning': prd.Quantity==1,'text-primary': prd.Quantity>2 }">
+                    {{prd?.Name | uppercase}}
+                </td>
+                <td>{{prd.Price |currency: "USD":"symbol"}}</td>
+                <td *ngSwitchCase="1"> Last item</td>
+                <td *ngSwitchCase="2"> Two items only available</td>
+                <td *ngSwitchDefault>
+                    <div *ngIf="prd.Quantity; else OutOfStock">{{prd?.Quantity}}</div>
+                    <ng-template #OutOfStock>Out of Stock</ng-template>
+                </td>
+                <td><img appHighligher="gray" defaultColor="yellow" [src]="prd.ImgURL" alt=""></td>
+                <td><button type="button" class="btn btn-primary">details</button></td>
+                <td><input type="number" class="form-cotrol" #boughtCount></td>
+                <td><button type="button" class="btn btn-primary" (click)="calcTotalPrice(prd.Price, boughtCount.value)">buy</button></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <h3>[For Test] Total price (In nested): {{totalOrderPrice}}</h3>
+</div>
