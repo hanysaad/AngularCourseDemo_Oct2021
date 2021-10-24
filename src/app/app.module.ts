@@ -12,7 +12,10 @@ import { HighligherDirective } from './Directives/highligher.directive';
 import { USDtoEGPPipe } from './Pipes/usdto-egp.pipe';
 import { OrderMasterComponent } from './Components/Order/order-master/order-master.component';
 import { OrderDetailsComponent } from './Components/Order/order-details/order-details.component';
+import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponentComponent } from './Components/not-found-component/not-found-component.component';
 
+//const routes: Routes = [];
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,11 +26,13 @@ import { OrderDetailsComponent } from './Components/Order/order-details/order-de
     HighligherDirective,
     USDtoEGPPipe,
     OrderMasterComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    NotFoundComponentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    //RouterModule.forRoot(routes),
     FormsModule
   ],
   providers: [],

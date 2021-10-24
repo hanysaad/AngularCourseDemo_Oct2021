@@ -11,5 +11,11 @@
         <app-order-details [sentCatIDFrmMaster]="selectedCategory" (totalPriceChanged)="onTotalPriceChanged($event)"></app-order-details>
     </div>
     <hr>
+    <div class="mb-3">
+        <label for="" class="form-label">Enter your Name:</label>
+        <input type="text" class="form-control" #custFullName name="custname" id="custName" aria-describedby="helpId" placeholder="">
+        <button type="button" class="btn btn-primary" (click)="checkCustName()">Check</button>
+
+    </div>
     <h3>Total Order Price: {{totalPriceForBoughtItems}}</h3>
 </div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductService } from './Services/product.service';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   // styles:["h1{color:red}", "h1{background-color: yellow}"]
   templateUrl:'./app.component.html',
   styleUrls:['./app.component.scss']
+  //,providers:[ProductService]
 })
 
 export class AppComponent {
