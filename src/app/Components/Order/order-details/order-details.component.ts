@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import {EventEmitter} from '@angular/core'
+import { Router } from '@angular/router';
 import { Product } from 'src/app/Models/product';
 import { ProductService } from 'src/app/Services/product.service';
 
@@ -15,7 +16,8 @@ export class OrderDetailsComponent implements OnInit, OnChanges {
   totalOrderPrice:number=0;
   @Output() totalPriceChanged: EventEmitter<number>= new EventEmitter<number>();
 
-  constructor(private prdSer:ProductService) {
+  constructor(private prdSer:ProductService
+              , private router:Router) {
    }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -45,4 +47,10 @@ export class OrderDetailsComponent implements OnInit, OnChanges {
     this.totalOrderPrice+= (+itemPrice*+itemCount);
     this.totalPriceChanged.emit(this.totalOrderPrice);
   }
+
+  viewProduct(prdID:number):void{
+    this.router.navigate(['/Product/',prdID]);
+    //this.router.navigateByUrl('/Product/' + prdID);
+  }
+  
 } 

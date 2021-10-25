@@ -1,0 +1,15 @@
+<div class="card mt-2" style="width: 18rem;">
+    <img class="card-img-top" [src]="prd?.ImgURL" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">Name: {{prd?.Name}}</h5>
+        <p class="card-text">Price: {{prd?.Price}}</p>
+        <p class="card-text">Quantity: {{prd?.Quantity}}</p>
+
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" [disabled]="sentPrdID==1" class="btn btn-primary" (click)="prevProduct()">Previous </button>
+            <button type="button" class="btn btn-primary" (click)="nextProdcut()">Next</button>
+        </div>
+        <hr>
+        <a class="btn btn-primary" (click)="goBack()">Go Back</a>
+    </div>
+</div>

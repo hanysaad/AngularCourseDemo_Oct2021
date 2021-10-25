@@ -8,7 +8,8 @@
                 <th>Price in USD</th>
                 <th>Quantity</th>
                 <th>Image</th>
-                <th>details</th>
+                <th>details (Button)</th>
+                <th>details (Link)</th>
                 <th>item count</th>
                 <th>Buy</th>
             </tr>
@@ -27,7 +28,10 @@
                     <ng-template #OutOfStock>Out of Stock</ng-template>
                 </td>
                 <td><img appHighligher="gray" defaultColor="yellow" [src]="prd.ImgURL" alt=""></td>
-                <td><button type="button" class="btn btn-primary">details</button></td>
+                <td><button type="button" class="btn btn-primary" (click)="viewProduct(prd.ID)">details</button></td>
+                <td>
+                    <a class="btn btn-primary" [routerLink]="['/Product', prd.ID]" role="button">Details</a>
+                </td>
                 <td><input type="number" class="form-cotrol" #boughtCount></td>
                 <td><button type="button" class="btn btn-primary" (click)="calcTotalPrice(prd.Price, boughtCount.value)">buy</button></td>
             </tr>

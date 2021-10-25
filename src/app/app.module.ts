@@ -14,6 +14,7 @@ import { OrderMasterComponent } from './Components/Order/order-master/order-mast
 import { OrderDetailsComponent } from './Components/Order/order-details/order-details.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponentComponent } from './Components/not-found-component/not-found-component.component';
+import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 
 //const routes: Routes = [];
 @NgModule({
@@ -27,7 +28,8 @@ import { NotFoundComponentComponent } from './Components/not-found-component/not
     USDtoEGPPipe,
     OrderMasterComponent,
     OrderDetailsComponent,
-    NotFoundComponentComponent
+    NotFoundComponentComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
