@@ -20,7 +20,10 @@
                     <a class="nav-link" routerLink="/User/Profile" routerLinkActive="active">My Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/User/Login" routerLinkActive="active">Login</a>
+                    <a class="nav-link" [hidden]="isLogged" routerLink="/User/Login" routerLinkActive="active">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [hidden]="!isLogged" routerLink="/User/Logout" routerLinkActive="active">Logout</a>
                 </li>
             </ul>
         </div>

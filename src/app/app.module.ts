@@ -12,10 +12,10 @@ import { HighligherDirective } from './Directives/highligher.directive';
 import { USDtoEGPPipe } from './Pipes/usdto-egp.pipe';
 import { OrderMasterComponent } from './Components/Order/order-master/order-master.component';
 import { OrderDetailsComponent } from './Components/Order/order-details/order-details.component';
-import { RouterModule, Routes } from '@angular/router';
+// import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponentComponent } from './Components/not-found-component/not-found-component.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
-
+import {HttpClientModule} from '@angular/common/http'
 //const routes: Routes = [];
 @NgModule({
   declarations: [
@@ -35,9 +35,11 @@ import { ProductDetailsComponent } from './Components/product-details/product-de
     BrowserModule,
     AppRoutingModule,
     //RouterModule.forRoot(routes),
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

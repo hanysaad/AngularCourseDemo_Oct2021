@@ -10,6 +10,7 @@ const routes: Routes=[
   {path: 'Profile', component:UserProfileComponent, 
     canActivate:[UserAuthGuard]},
   {path: 'Login', component:UserLoginComponent},
+  {path: 'Logout', component:UserLoginComponent},
   {path:'', redirectTo:'/User/Profile', pathMatch:'full'}
 ];
 

@@ -3,6 +3,7 @@ import {EventEmitter} from '@angular/core'
 import { Router } from '@angular/router';
 import { Product } from 'src/app/Models/product';
 import { ProductService } from 'src/app/Services/product.service';
+import { ProductsFrmAPIService } from 'src/app/Services/products-frm-api.service';
 
 @Component({
   selector: 'app-order-details',
@@ -17,14 +18,34 @@ export class OrderDetailsComponent implements OnInit, OnChanges {
   @Output() totalPriceChanged: EventEmitter<number>= new EventEmitter<number>();
 
   constructor(private prdSer:ProductService
+              , private prdSerAPI: ProductsFrmAPIService
               , private router:Router) {
    }
 
   ngOnChanges(changes: SimpleChanges): void {
     if(this.sentCatIDFrmMaster!=0)
-      this.prdListForSelCat=this.prdSer.getProductsByCatID(this.sentCatIDFrmMaster);
+    {
+      // this.prdListForSelCat=this.prdSer.getProductsByCatID(this.sentCatIDFrmMaster);
+      this.prdSerAPI.getProductByCatID(this.sentCatIDFrmMaster)
+        .subscribe(productList=>{
+          this.prdListForSelCat=productList;
+        },
+        err=>{
+          console.log(err);
+        });
+    }
     else
-      this.prdListForSelCat=this.prdSer.getAllProducts();
+    {
+      this.prdSerAPI.getAllProducts()
+        .subscribe(productList=>{
+          this.prdListForSelCat=productList;
+        },
+        err=>{
+          console.log(err);
+        });
+      //this.prdListForSelCat=this.prdSer.getAllProducts();
+    }
+     
 
       
     // if(this.sentCatIDFrmMaster!=0)
