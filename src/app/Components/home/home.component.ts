@@ -24,9 +24,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const subscriber={
-      next: (msg:string)=>{ alert(msg);},
-      error: (err:string)=>{ alert(err);},
-      complete:()=>{alert("Observer completed")}
+      next: (msg:string)=>{ console.log(msg);},
+      error: (err:string)=>{ console.log(err);},
+      complete:()=>{console.log("Observer completed")}
     };
     // let sub=this.notifMsgsService.getScheduledNotifications().subscribe(subscriber);
     // let sub=this.notifMsgsService.getSequenceNotifications().subscribe(subscriber);

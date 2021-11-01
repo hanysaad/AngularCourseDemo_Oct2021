@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './Components/home/home.component';
+import { NewProductComponent } from './Components/new-product/new-product.component';
 import { NotFoundComponentComponent } from './Components/not-found-component/not-found-component.component';
 import { OrderMasterComponent } from './Components/Order/order-master/order-master.component';
 import { ProdcutsComponent } from './Components/prodcuts/prodcuts.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
+import { UpdateProductComponent } from './Components/update-product/update-product.component';
 
 //First-match wins.
 const routes: Routes = [
@@ -14,6 +16,8 @@ const routes: Routes = [
   {path:'Products', component: ProdcutsComponent},
   {path:'Product/:pid', component: ProductDetailsComponent},
   {path:'Order', component: OrderMasterComponent},
+  {path:'NewProduct', component: NewProductComponent},
+  {path:'UpdateProduct', component: UpdateProductComponent},
   {
     path: 'User', 
     loadChildren: () => import('./Components/user/user.module')

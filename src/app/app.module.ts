@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { HomeComponent } from './Components/home/home.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProdcutsComponent } from './Components/prodcuts/prodcuts.component';
 import { HighligherDirective } from './Directives/highligher.directive';
 import { USDtoEGPPipe } from './Pipes/usdto-egp.pipe';
@@ -15,7 +15,9 @@ import { OrderDetailsComponent } from './Components/Order/order-details/order-de
 // import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponentComponent } from './Components/not-found-component/not-found-component.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import { NewProductComponent } from './Components/new-product/new-product.component';
+import { UpdateProductComponent } from './Components/update-product/update-product.component'
 //const routes: Routes = [];
 @NgModule({
   declarations: [
@@ -29,13 +31,16 @@ import {HttpClientModule} from '@angular/common/http'
     OrderMasterComponent,
     OrderDetailsComponent,
     NotFoundComponentComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    NewProductComponent,
+    UpdateProductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     //RouterModule.forRoot(routes),
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],
